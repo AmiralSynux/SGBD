@@ -70,7 +70,7 @@
             // 
             this.MainSplitter.Panel2.Controls.Add(this.panel2);
             this.MainSplitter.Panel2.Controls.Add(this.labelPirati);
-            this.MainSplitter.Size = new System.Drawing.Size(794, 411);
+            this.MainSplitter.Size = new System.Drawing.Size(845, 411);
             this.MainSplitter.SplitterDistance = 205;
             this.MainSplitter.SplitterWidth = 7;
             this.MainSplitter.TabIndex = 0;
@@ -83,7 +83,7 @@
             this.panel1.Controls.Add(this.gridEchipaj);
             this.panel1.Location = new System.Drawing.Point(17, 41);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(761, 157);
+            this.panel1.Size = new System.Drawing.Size(812, 157);
             this.panel1.TabIndex = 2;
             // 
             // gridEchipaj
@@ -91,12 +91,13 @@
             this.gridEchipaj.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridEchipaj.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridEchipaj.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridEchipaj.Location = new System.Drawing.Point(0, 0);
             this.gridEchipaj.Name = "gridEchipaj";
             this.gridEchipaj.RowHeadersWidth = 51;
             this.gridEchipaj.RowTemplate.Height = 24;
-            this.gridEchipaj.Size = new System.Drawing.Size(758, 154);
+            this.gridEchipaj.Size = new System.Drawing.Size(809, 154);
             this.gridEchipaj.TabIndex = 1;
             // 
             // labelEchipaj
@@ -117,7 +118,7 @@
             this.panel2.Controls.Add(this.gridPirati);
             this.panel2.Location = new System.Drawing.Point(17, 37);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(761, 149);
+            this.panel2.Size = new System.Drawing.Size(812, 146);
             this.panel2.TabIndex = 3;
             // 
             // gridPirati
@@ -125,12 +126,13 @@
             this.gridPirati.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridPirati.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridPirati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPirati.Location = new System.Drawing.Point(0, 0);
             this.gridPirati.Name = "gridPirati";
             this.gridPirati.RowHeadersWidth = 51;
             this.gridPirati.RowTemplate.Height = 24;
-            this.gridPirati.Size = new System.Drawing.Size(758, 145);
+            this.gridPirati.Size = new System.Drawing.Size(809, 142);
             this.gridPirati.TabIndex = 2;
             // 
             // labelPirati
@@ -147,16 +149,16 @@
             // 
             this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 32);
+            this.button1.Size = new System.Drawing.Size(136, 35);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "Delete Pirat";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(3, 41);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(88, 35);
+            this.button2.Size = new System.Drawing.Size(136, 26);
             this.button2.TabIndex = 2;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
@@ -169,16 +171,16 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.button2);
-            this.panel3.Location = new System.Drawing.Point(812, 5);
+            this.panel3.Location = new System.Drawing.Point(863, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(98, 411);
+            this.panel3.Size = new System.Drawing.Size(146, 411);
             this.panel3.TabIndex = 3;
             // 
             // GreetingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(922, 428);
+            this.ClientSize = new System.Drawing.Size(1021, 428);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.MainSplitter);
             this.Name = "GreetingForm";
