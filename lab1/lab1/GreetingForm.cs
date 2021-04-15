@@ -13,12 +13,12 @@ namespace lab1
 {
     public partial class GreetingForm : Form
     {
-        private string connectionString = "Server=DESKTOP-D82IMOD\\SQLEXPRESS;Database=OnePiece;Integrated Security=true;";
-        private DataSet ds = new DataSet();
-        SqlDataAdapter parentAdapter = new SqlDataAdapter();
-        SqlDataAdapter childAdapter = new SqlDataAdapter();
-        BindingSource bsParent = new BindingSource();
-        BindingSource bsChild = new BindingSource();
+        private const string ConnectionString = "Server=DESKTOP-D82IMOD\\SQLEXPRESS;Database=OnePiece;Integrated Security=true;";
+        private readonly DataSet _ds = new DataSet();
+        private readonly SqlDataAdapter _parentAdapter = new SqlDataAdapter();
+        private readonly SqlDataAdapter _childAdapter = new SqlDataAdapter();
+        private readonly BindingSource _bsParent = new BindingSource();
+        private readonly BindingSource _bsChild = new BindingSource();
         public GreetingForm()
         {
             InitializeComponent();
@@ -28,22 +28,22 @@ namespace lab1
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    parentAdapter.SelectCommand = new SqlCommand("select * from Echipaj;", connection);
-                    childAdapter.SelectCommand = new SqlCommand("SELECT * FROM Marinar", connection);
-                    parentAdapter.Fill(ds, "Echipaj");
-                    childAdapter.Fill(ds, "Marinar");
-                    bsParent.DataSource = ds.Tables["Echipaj"];
-                    gridEchipaj.DataSource = bsParent;
-                    DataColumn pk = ds.Tables["Echipaj"].Columns["cod_echipaj"];
-                    DataColumn fk = ds.Tables["Marinar"].Columns["cod_echipaj"];
+                    _parentAdapter.SelectCommand = new SqlCommand("select * from Echipaj;", connection);
+                    _childAdapter.SelectCommand = new SqlCommand("SELECT * FROM Marinar", connection);
+                    _parentAdapter.Fill(_ds, "Echipaj");
+                    _childAdapter.Fill(_ds, "Marinar");
+                    _bsParent.DataSource = _ds.Tables["Echipaj"];
+                    gridEchipaj.DataSource = _bsParent;
+                    DataColumn pk = _ds.Tables["Echipaj"].Columns["cod_echipaj"];
+                    DataColumn fk = _ds.Tables["Marinar"].Columns["cod_echipaj"];
                     DataRelation relation = new DataRelation("FK_Echipaj_Marinar", pk, fk);
-                    ds.Relations.Add(relation);
-                    bsChild.DataSource = bsParent;
-                    bsChild.DataMember = "FK_Echipaj_Marinar";
-                    gridMarinar.DataSource = bsChild;
+                    _ds.Relations.Add(relation);
+                    _bsChild.DataSource = _bsParent;
+                    _bsChild.DataMember = "FK_Echipaj_Marinar";
+                    gridMarinar.DataSource = _bsChild;
                 }
             }
             catch (Exception ex)
@@ -69,7 +69,7 @@ namespace lab1
                 }
 
                 var id =(int) rows[0].Cells["cod_marinar"].Value;
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
                     SqlCommand deleteCommand = new SqlCommand("DELETE FROM Marinar WHERE cod_marinar=@cod;",
@@ -95,7 +95,7 @@ namespace lab1
                 MessageBox.Show("Please select a row or fill in the data!");
                 return;
             }
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
                 SqlCommand updateCommand = new SqlCommand("UPDATE Marinar SET functie=@functie, alias=@alias,cod_individ=@cod_individ,cod_echipaj=@cod_echipaj WHERE" +
@@ -112,21 +112,21 @@ namespace lab1
 
         private void refresh_Click(object sender, EventArgs e)
         {
-            ds.Tables["Marinar"].Clear();
-            ds.Tables["Echipaj"].Clear();
+            _ds.Tables["Marinar"].Clear();
+            _ds.Tables["Echipaj"].Clear();
             cod_marinarText.Text = "";
             functieText.Text = "";
             aliasText.Text = "";
             cod_individText.Text = "";
             cod_echipajText.Text = "";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
-                parentAdapter.SelectCommand = new SqlCommand("select * from Echipaj;", connection);
+                _parentAdapter.SelectCommand = new SqlCommand("select * from Echipaj;", connection);
                 // childAdapter.SelectCommand = new SqlCommand("SELECT * FROM Jocuri", connection);
-                childAdapter.SelectCommand = new SqlCommand("SELECT * FROM Marinar", connection);
-                parentAdapter.Fill(ds, "Echipaj");
-                childAdapter.Fill(ds, "Marinar");
+                _childAdapter.SelectCommand = new SqlCommand("SELECT * FROM Marinar", connection);
+                _parentAdapter.Fill(_ds, "Echipaj");
+                _childAdapter.Fill(_ds, "Marinar");
             }
         }
 
@@ -155,7 +155,7 @@ namespace lab1
             }
 
             int echipaj = int.Parse(rows[0].Cells["cod_echipaj"].Value.ToString());
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
                 SqlCommand insertCommand = new SqlCommand("insert into Marinar (functie,alias,cod_individ,cod_echipaj,cod_marinar)values(@functie, @alias,@cod_individ,@cod_echipaj,@cod_marinar);", connection);
